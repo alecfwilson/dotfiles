@@ -87,6 +87,8 @@ brew 'z'
 brew 'zlib'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'zsh-history-substring-search'
+brew 'zsh-syntax-highlighting'
 
 # Development
 
