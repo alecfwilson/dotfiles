@@ -19,7 +19,7 @@ export MNML_RPROMPT=('mnml_cwd 20')
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -93,6 +93,7 @@ plugins=(
 	# git-extras
 	# git-flow 
 	# history
+	history-substring-search
 	# jsontools
 	last-working-dir
 	# node
@@ -115,6 +116,8 @@ plugins=(
 	vscode
 	# web-search
 	z
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -149,7 +152,7 @@ source $DOTFILES/aliases.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $DOTFILES/antigen.zsh
+# source $DOTFILES/antigen.zsh
 
 # Load the oh-my-zsh's library.
 # antigen use oh-my-zsh
@@ -198,9 +201,10 @@ source $DOTFILES/antigen.zsh
 # antigen bundle zsh-users/zsh-autosuggestions
 
 # Load the theme.
-antigen theme romkatv/powerlevel10k
+# antigen theme romkatv/powerlevel10k
 
 # Tell Antigen that you're done.
-antigen apply
+# antigen apply
 
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
+source /Users/alecfwilson/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

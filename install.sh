@@ -13,8 +13,12 @@ brew update
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
 brew bundle
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+echo "source $DOTFILES/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $DOTFILES/.zshrc
 
-curl -L git.io/antigen > antigen.zsh
+# curl -L git.io/antigen > antigen.zsh
 
 # Install PHP extensions with PECL
 # pecl install memcached imagick
