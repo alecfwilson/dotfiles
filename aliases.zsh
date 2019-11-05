@@ -1,10 +1,26 @@
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Get week number
+alias week='date +%V'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
 # Shortcuts
 alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
-alias reloadcli="source $HOME/.zshrc"
+alias reload="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias ll="/usr/local/opt/coreutils/libexec/gnubin/ls -ahlF --color --group-directories-first"
 weather() { curl -4 wttr.in/${1:-antwerp} }
-alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 alias zbundle="antibody bundle < $DOTFILES/zsh_plugins.txt > $DOTFILES/zsh_plugins.sh"
@@ -12,30 +28,9 @@ alias zbundle="antibody bundle < $DOTFILES/zsh_plugins.txt > $DOTFILES/zsh_plugi
 # Directories
 alias dotfiles="cd $DOTFILES"
 alias library="cd $HOME/Library"
-alias sites="cd $HOME/Sites"
-alias lara="sites && cd laravel/"
-
-# Laravel
-alias a="php artisan"
-alias ams="php artisan migrate:fresh --seed"
-
-# PHP
-alias cfresh="rm -rf vendor/ composer.lock && composer i"
-
-# JS
-alias nfresh="rm -rf node_modules/ package-lock.json && npm install"
-alias watch="npm run watch"
-
-# Vagrant
-alias v="vagrant global-status"
-alias vup="vagrant up"
-alias vhalt="vagrant halt"
-alias vssh="vagrant ssh"
-alias vreload="vagrant reload"
-alias vrebuild="vagrant destroy --force && vagrant up"
 
 # Docker
-alias docker-composer="docker-compose"
+# alias docker-composer="docker-compose"
 #alias dstop="docker stop $(docker ps -a -q)"
 #alias dpurgecontainers="dstop && docker rm $(docker ps -a -q)"
 #alias dpurgeimages="docker rmi $(docker images -q)"
@@ -49,9 +44,25 @@ alias amend="git commit --amend --no-edit"
 alias amendall="git add . && amend"
 alias wip="commit wip"
 alias gst="git status"
+alias ga="git add"
 alias gb="git branch"
-alias gc="git checkout"
+alias gc="git commit"
+alias gco="git checkout"
 alias gd="git diff"
 alias resolve="git add . && git commit --no-edit"
 alias gl="git log --oneline --decorate --color"
 alias nuke="git clean -df && git reset --hard"
+
+# nice directory listing
+alias l="ls -Glah"
+alias la='ls -al'
+alias ll='ls -lth'
+alias ls='ls -F'
+
+# nice directory tree listing showing permissions, user, group and size (human readable)
+alias t="tree -L 1 --dirsfirst -shugp"
+# nice directory tree listing, but just 2 levels
+alias tt="tree -L 2 --dirsfirst"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
