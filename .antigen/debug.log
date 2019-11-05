@@ -5085,3 +5085,106 @@ antigen
 antigen-apply
 antigen
 /Users/alecfwilson/.zshrc
+[WRN][1572913967.1218359470] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913967.1218359470] -antigen-interactive-mode: toplevel:file:file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[TRA][1572913967.1220819950] /Users/alecfwilson/.dotfiles/antigen.zsh:475
+[TRA][1572913967.1220819950] Gonna create compdump file @ env-setup COMPDUMP
+[TRA][1572913967.1220819950] TRACE
+-antigen-env-setup
+/Users/alecfwilson/.dotfiles/antigen.zsh
+/Users/alecfwilson/.oh-my-zsh/oh-my-zsh.sh
+/Users/alecfwilson/.zshrc
+[WRN][1572913968.4991590977] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913968.4991590977] -antigen-interactive-mode: toplevel:file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[TRA][1572913968.4993999004] /Users/alecfwilson/.dotfiles/antigen.zsh:475
+[TRA][1572913968.4993999004] Gonna create compdump file @ env-setup COMPDUMP
+[TRA][1572913968.4993999004] TRACE
+-antigen-env-setup
+/Users/alecfwilson/.dotfiles/antigen.zsh
+/Users/alecfwilson/.zshrc
+[TRA][1572913968.5836429596] /Users/alecfwilson/.dotfiles/antigen.zsh:808
+[TRA][1572913968.5836429596] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1572913968.5836429596] TRACE
+antigen-bundle
+antigen-theme
+antigen
+/Users/alecfwilson/.zshrc
+[LOG][1572913968.5851020813] /Users/alecfwilson/.dotfiles/antigen.zsh:785
+[LOG][1572913968.5851020813] Called antigen-apply
+[TRA][1572913968.5853929520] /Users/alecfwilson/.dotfiles/antigen.zsh:789
+[TRA][1572913968.5853929520] Gonna create compdump file @ apply COMPDUMP
+[TRA][1572913968.5853929520] TRACE
+antigen-apply
+antigen
+/Users/alecfwilson/.zshrc
+[WRN][1572913992.5535058975] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913992.5535058975] -antigen-interactive-mode: file:file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913992.5542290211] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913992.5542290211] -antigen-lock-init return code was 0
+[LOG][1572913992.5544810295] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913992.5544810295] LOADED EXTENSION lock EXT
+[WRN][1572913992.5614390373] /Users/alecfwilson/.dotfiles/antigen.zsh:1684
+[WRN][1572913992.5614390373] Init parallel extension PARALLEL
+[WRN][1572913992.5617990494] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913992.5617990494] -antigen-interactive-mode: file:file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913992.5621140003] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913992.5621140003] -antigen-parallel-init return code was 0
+[LOG][1572913992.5623440742] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913992.5623440742] LOADED EXTENSION parallel EXT
+[WRN][1572913992.5625700951] /Users/alecfwilson/.dotfiles/antigen.zsh:1692
+[WRN][1572913992.5625700951] Exec parallel extension PARALLEL
+[WRN][1572913992.5632719994] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913992.5632719994] -antigen-interactive-mode: file:file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913992.5636320114] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913992.5636320114] -antigen-defer-init return code was 0
+[LOG][1572913992.5639350414] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913992.5639350414] LOADED EXTENSION defer EXT
+[WRN][1572913992.5677640438] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913992.5677640438] -antigen-interactive-mode: file:file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913992.5682361126] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913992.5682361126] -antigen-cache-init return code was 0
+[LOG][1572913992.5683979988] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913992.5683979988] LOADED EXTENSION cache EXT
+[WRN][1572913993.8780980110] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913993.8780980110] -antigen-interactive-mode: file:file:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913993.8785328865] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913993.8785328865] -antigen-lock-init return code was 0
+[LOG][1572913993.8787159920] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913993.8787159920] LOADED EXTENSION lock EXT
+[WRN][1572913993.8793489933] /Users/alecfwilson/.dotfiles/antigen.zsh:1684
+[WRN][1572913993.8793489933] Init parallel extension PARALLEL
+[WRN][1572913993.8795769215] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913993.8795769215] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913993.8797550201] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913993.8797550201] -antigen-parallel-init return code was 0
+[LOG][1572913993.8798780441] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913993.8798780441] LOADED EXTENSION parallel EXT
+[WRN][1572913993.8801059723] /Users/alecfwilson/.dotfiles/antigen.zsh:1692
+[WRN][1572913993.8801059723] Exec parallel extension PARALLEL
+[WRN][1572913993.8805530071] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913993.8805530071] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913993.8807179928] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913993.8807179928] -antigen-defer-init return code was 0
+[LOG][1572913993.8809020519] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913993.8809020519] LOADED EXTENSION defer EXT
+[WRN][1572913993.8813331127] /Users/alecfwilson/.dotfiles/antigen.zsh:266
+[WRN][1572913993.8813331127] -antigen-interactive-mode: file:file:shfunc:shfunc:shfunc:eval:shfunc:shfunc $_ANTIGEN_INTERACTIVE = 
+[WRN][1572913993.8816421032] /Users/alecfwilson/.dotfiles/antigen.zsh:1572
+[WRN][1572913993.8816421032] -antigen-cache-init return code was 0
+[LOG][1572913993.8817648888] /Users/alecfwilson/.dotfiles/antigen.zsh:1574
+[LOG][1572913993.8817648888] LOADED EXTENSION cache EXT
+[TRA][1572913993.8852820396] /Users/alecfwilson/.dotfiles/antigen.zsh:808
+[TRA][1572913993.8852820396] Called antigen-bundle with romkatv/powerlevel10k --btype=theme BUNDLE
+[TRA][1572913993.8852820396] TRACE
+antigen-bundle
+antigen-theme
+antigen
+/Users/alecfwilson/.zshrc
+[LOG][1572913998.3310120106] /Users/alecfwilson/.dotfiles/antigen.zsh:785
+[LOG][1572913998.3310120106] Called antigen-apply
+[TRA][1572913998.3312931061] /Users/alecfwilson/.dotfiles/antigen.zsh:789
+[TRA][1572913998.3312931061] Gonna create compdump file @ apply COMPDUMP
+[TRA][1572913998.3312931061] TRACE
+antigen-apply
+antigen
+/Users/alecfwilson/.zshrc
