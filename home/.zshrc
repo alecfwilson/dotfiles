@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your dotfiles.
 export DOTFILES=$HOME/.dotfiles
 
@@ -7,13 +14,6 @@ export DOTFILES=$HOME/.dotfiles
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Enable completions
-autoload -Uz compinit && compinit
-
-# Minimal - Theme Settings
-export MNML_INSERT_CHAR="$"
-export MNML_PROMPT=(mnml_git mnml_keymap)
-export MNML_RPROMPT=('mnml_cwd 20')
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -81,14 +81,13 @@ ZSH_CUSTOM=$DOTFILES
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	autojump
+	# autojump
 	# autopep8
 	brew
 	common-aliases
 	# compleat
 	# django
 	# docker
-	fasd
 	# gitfast
 	# git-extras
 	# git-flow 
@@ -98,7 +97,7 @@ plugins=(
 	last-working-dir
 	# node
 	# npm
-	osx
+	macos
 	# perl 
 	# pep8
 	pip
@@ -115,12 +114,13 @@ plugins=(
 	# virtualenvwrapper
 	vscode
 	# web-search
-	z
+	zoxide
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
+source ~/.aliases
 
 # User configuration
 
@@ -152,59 +152,41 @@ source $DOTFILES/aliases.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# source $DOTFILES/antigen.zsh
 
-# Load the oh-my-zsh's library.
-# antigen use oh-my-zsh
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"	
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# antigen bundle git
-# antigen bundle autojump
-# antigen bundle autopep8
-# antigen bundle brew
-# antigen bundle command-not-found
-# antigen bundle common-aliases
-# antigen bundle compleat
-# antigen bundle django
-# antigen bundle docker
-# antigen bundle fasd
-# antigen bundle gitfast
-# antigen bundle git-extras
-# antigen bundle git-flow history
-# antigen bundle jsontools
-# antigen bundle last-working-dir
-# # antigen bundle node
-# # antigen bundle npm
-# antigen bundle osx
-# antigen bundle perl 
-# antigen bundle pep8
-# antigen bundle pip
-# antigen bundle pyenv
-# antigen bundle pylint
-# antigen bundle python
-# antigen bundle sublime
-# antigen bundle sudo
-# antigen bundle systemd
-# antigen bundle tmux
-# antigen bundle tmuxinator
-# antigen bundle urltools
-# antigen bundle vi-mode
-# antigen bundle virtualenvwrapper
-# antigen bundle vscode
-# antigen bundle web-search
-# antigen bundle z
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc'; fi
 
-# Syntax highlighting bundle.
-# antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle zsh-users/zsh-completions
-# antigen bundle zsh-users/zsh-autosuggestions
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
-# Load the theme.
-# antigen theme romkatv/powerlevel10k
+eval "$(pyenv init -)"
 
-# Tell Antigen that you're done.
-# antigen apply
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc'; fi
+# Install Ruby Gems to ~/gems
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+# Lazy-load nvm: defer the ~500ms source until first use
+export NVM_DIR="$HOME/.nvm"
+_nvm_load() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+}
+nvm()  { _nvm_load && nvm  "$@" }
+node() { _nvm_load && node "$@" }
+npm()  { _nvm_load && npm  "$@" }
+npx()  { _nvm_load && npx  "$@" }
 
-POWERLEVEL9K_CONTEXT_TEMPLATE="%n@`hostname -f`"
-source /Users/alecfwilson/.dotfiles/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"

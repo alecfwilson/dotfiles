@@ -1,5 +1,6 @@
 [user]
 	name = Alec Wilson
+	email = alec.f.wilson@gmail.com
 [include]
         path = ~/.gitconfig.dotfiles_profile
 [merge]
@@ -15,7 +16,7 @@
         local = yellow 
         remote = green
         ui = auto
-[tcolor "diff"]
+[color "diff"]
         meta = yellow bold
         frag = magenta bold
         old = red bold
@@ -28,8 +29,9 @@
         excludesfile = ~/.gitignore
         editor = vim
         whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	askpass = git-gui--askpass
 [push]
-        default = tracking
+        default = simple
 [alias]
         glog = log --graph --decorate --all --pretty=oneline --abbrev-commit
         blog = log --graph --decorate --all --pretty=oneline --abbrev-commit --source
@@ -46,4 +48,8 @@
 	type = cat-file -t
 	dump = cat-file -p
 [help]
-        autocorrect = 1
+        autocorrect = 20
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
