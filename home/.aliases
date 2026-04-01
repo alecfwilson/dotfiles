@@ -88,7 +88,7 @@ echo "flush" && flush
 echo "cleanup" && (cd ~ && cleanup)
 echo "lscleanup" && lscleanup
 echo "brew bundle dump" && brew bundle dump --force --file="$HOME/.dotfiles/Brewfile"
-echo "mackup backup" && mackup backup --force
+echo "mackup backup" && mackup backup --force 2>/dev/null | grep -c "Backing up" | xargs -I{} echo "  {} files backed up"
 echo "emptytrash" && emptytrash
 )'
 
