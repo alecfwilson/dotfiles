@@ -13,14 +13,12 @@ ZSH_CUSTOM=$DOTFILES
 
 export UPDATE_ZSH_DAYS=7
 ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"  # uncomment for faster git status in large repos
 
 plugins=(
 	git
 	brew
-	common-aliases
 	history-substring-search
 	last-working-dir
 	macos

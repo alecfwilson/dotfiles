@@ -83,7 +83,7 @@ echo "pip3 cache purge" && pip3 cache purge
 echo "yarn cache clean" && yarn cache clean
 echo "poetry cache clear --all pypi" && poetry cache clear --all pypi
 echo "xcrun simctl delete unavailable" && xcrun simctl delete unavailable
-echo "gem cleanup" && gem cleanup
+echo "gem cleanup" && gem cleanup && rbenv rehash
 echo "flush" && flush
 echo "cleanup" && (cd ~ && cleanup)
 echo "lscleanup" && lscleanup
@@ -102,7 +102,6 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 # Git
 alias gs='git status '
-alias gst="git status"
 alias ga='git add '
 alias gb='git branch '
 alias gc='git commit'
@@ -118,4 +117,4 @@ alias nuke="git clean -df && git reset --hard"
 alias wip='git add . && git commit -m WIP && git push ${DEFAULT_GIT_REMOTE} $(just_git_branch)'
 alias got='git '
 alias get='git '
-alias dotfilepush="cd ~/.dotfiles && git add . && git commit -m \"sync dotfiles\" && git push origin master && cd -"
+alias dotfilepush="cd ~/.dotfiles && git add home/ && git commit -m \"sync dotfiles\" && git push origin master && cd -"
