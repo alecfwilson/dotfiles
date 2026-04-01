@@ -29,6 +29,23 @@ done
 cd "$HOME/.dotfiles"
 stow --no-folding home
 
+# Initialize zsh plugin submodules
+git submodule update --init
+
+# Install Ruby via rbenv
+rbenv install 3.3.7 --skip-existing
+rbenv global 3.3.7
+
+# Install Node LTS via nvm
+if [[ ! -s "$HOME/.nvm/nvm.sh" ]]; then
+  # nvm not found — install via official script (check https://github.com/nvm-sh/nvm for latest version)
+  PROFILE=/dev/null curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+fi
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+nvm install --lts
+nvm alias default lts/*
+
 # Set default shell to zsh if not already
 if [[ "$SHELL" != "$(which zsh)" ]]; then
   chsh -s "$(which zsh)"
@@ -38,4 +55,3 @@ echo ""
 echo "Done. Next steps:"
 echo "  1. source ~/.zshrc (or open a new terminal)"
 echo "  2. mackup restore  (after confirming Dropbox is synced)"
-echo "  3. p10k configure  (to set up your prompt)"

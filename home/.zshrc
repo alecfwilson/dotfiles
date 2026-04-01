@@ -87,6 +87,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 
+# vi-mode: reduce Esc delay from 400ms to ~10ms
+KEYTIMEOUT=1
+
 # history-substring-search keybindings (up/down arrows)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
