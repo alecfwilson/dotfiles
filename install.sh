@@ -1,45 +1,37 @@
-#!/bin/sh
+#!/bin/zsh
 
 echo "Setting up your Mac..."
 
-# Check for Homebrew and install if we don't have it
-if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install Homebrew if missing
+if ! command -v brew &>/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Update Homebrew recipes
+# Add Homebrew to PATH for Apple Silicon (needed immediately in this script)
+if [[ $(uname -m) == "arm64" ]] && [[ -f /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Install all dependencies from Brewfile
 brew update
+brew bundle --file="$HOME/.dotfiles/Brewfile"
 
-# Install all our dependencies with bundle (See Brewfile)
-brew tap homebrew/bundle
-brew bundle
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-echo "source $DOTFILES/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $DOTFILES/.zshrc
+# Install oh-my-zsh if missing
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
-# curl -L git.io/antigen > antigen.zsh
+# Symlink dotfiles into home directory using stow
+cd "$HOME/.dotfiles"
+stow home
 
-# Install PHP extensions with PECL
-# pecl install memcached imagick
+# Set default shell to zsh if not already
+if [[ "$SHELL" != "$(which zsh)" ]]; then
+  chsh -s "$(which zsh)"
+fi
 
-# Install global Composer packages
-# /usr/local/bin/composer global require laravel/installer laravel/spark-installer laravel/valet
-
-# Install Laravel Valet
-# $HOME/.composer/vendor/bin/valet install
-
-# Create a Sites directory
-# This is a default directory for macOS user accounts but doesn't comes pre-installed
-mkdir $HOME/Sites
-
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
-
-# Symlink the Mackup config file to the home directory
-ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
-
-# Set macOS preferences
-# We will run this last because this will reload the shell
-# source .macos
+echo ""
+echo "Done. Next steps:"
+echo "  1. source ~/.zshrc (or open a new terminal)"
+echo "  2. mackup restore  (after confirming Dropbox is synced)"
+echo "  3. p10k configure  (to set up your prompt)"
