@@ -54,8 +54,8 @@ export EDITOR='vim'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Google Cloud SDK
-if [ -f '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # pyenv — shims added first, then pushed back by Homebrew below
 export PYENV_ROOT="$HOME/.pyenv"
