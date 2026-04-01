@@ -160,9 +160,6 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
-export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
-export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"	
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -172,15 +169,10 @@ if [ -f '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ale
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
 eval "$(pyenv init -)"
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc'; fi
-# Install Ruby Gems to ~/gems
-export GEM_HOME=$HOME/gems
-export PATH=$HOME/gems/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 # Lazy-load nvm: defer the ~500ms source until first use
@@ -197,3 +189,9 @@ npx()  { _nvm_load && npx  "$@" }
 
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+eval "$(direnv hook zsh)"
+
+# history-substring-search keybindings (up/down arrows)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down

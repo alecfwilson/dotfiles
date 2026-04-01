@@ -29,7 +29,6 @@
         excludesfile = ~/.gitignore
         editor = vim
         whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-	askpass = git-gui--askpass
 [push]
         default = simple
 [alias]
@@ -50,6 +49,6 @@
 [help]
         autocorrect = 20
 [credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
