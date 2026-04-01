@@ -45,9 +45,10 @@ export EDITOR='vim'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Google Cloud SDK
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+# Google Cloud SDK completion (binary in PATH via Homebrew)
+if [ -f "$HOMEBREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc" ]; then
+  . "$HOMEBREW_PREFIX/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
 # pyenv — shims added first, then pushed back by Homebrew below
 export PYENV_ROOT="$HOME/.pyenv"

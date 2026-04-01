@@ -77,7 +77,6 @@ echo "brew upgrade" && brew upgrade
 echo "brew update" && brew update
 omz_out=$(omz update 2>&1); echo "$omz_out" | grep -q "already at the latest" && echo "omz: already up to date" || echo "$omz_out"
 git -C $DOTFILES/plugins/zsh-autosuggestions pull --quiet && git -C $DOTFILES/plugins/zsh-syntax-highlighting pull --quiet && echo "zsh plugins up to date"
-echo "gcloud components update" && gcloud components update --quiet
 echo "mas upgrade" && mas upgrade
 echo "brew tap --repair -v" && brew tap --repair -v
 echo "brew cleanup -v" && brew cleanup -v

@@ -182,6 +182,7 @@ brew "zsh-syntax-highlighting"
 brew "goles/battery/battery"
 cask "basictex"
 cask "db-browser-for-sqlite"
+cask "gcloud-cli"
 cask "gpg-suite", args: { appdir: "/Applications" }
 cask "zoom"
 mas "Bear", id: 1091189122
