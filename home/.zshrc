@@ -122,6 +122,14 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 
+export DEFAULT_GIT_REMOTE=origin
+
+# Returns current git branch name — used by wip alias
+function just_git_branch {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "${ref#refs/heads/}"
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -146,7 +154,6 @@ export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-source $DOTFILES/aliases.zsh
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
