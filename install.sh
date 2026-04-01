@@ -32,9 +32,9 @@ stow --no-folding home
 # Initialize zsh plugin submodules
 git submodule update --init
 
-# Install Ruby via rbenv
-rbenv install 3.3.7 --skip-existing
-rbenv global 3.3.7
+# Install Ruby via rbenv (version read from ~/.ruby-version)
+rbenv install --skip-existing
+rbenv global "$(cat "$HOME/.ruby-version")"
 
 # Install Node LTS via nvm
 if [[ ! -s "$HOME/.nvm/nvm.sh" ]]; then

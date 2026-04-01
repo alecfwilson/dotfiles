@@ -38,12 +38,6 @@ source ~/.aliases
 
 export DEFAULT_GIT_REMOTE=origin
 
-# Returns current git branch name — used by wip alias
-function just_git_branch {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo "${ref#refs/heads/}"
-}
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR='vim'

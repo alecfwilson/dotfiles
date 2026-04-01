@@ -77,6 +77,7 @@ echo "brew upgrade" && brew upgrade
 echo "brew update" && brew update
 omz_out=$(omz update 2>&1); echo "$omz_out" | grep -q "already at the latest" && echo "omz: already up to date" || echo "$omz_out"
 git -C $DOTFILES/plugins/zsh-autosuggestions pull --quiet && git -C $DOTFILES/plugins/zsh-syntax-highlighting pull --quiet && echo "zsh plugins up to date"
+echo "gcloud components update" && gcloud components update --quiet
 echo "mas upgrade" && mas upgrade
 echo "brew tap --repair -v" && brew tap --repair -v
 echo "brew cleanup -v" && brew cleanup -v
@@ -115,7 +116,5 @@ alias amend="git commit --amend --no-edit"
 alias amendall="git add . && amend"
 alias resolve="git add . && git commit --no-edit"
 alias nuke="git clean -df && git reset --hard"
-alias wip='git add . && git commit -m WIP && git push ${DEFAULT_GIT_REMOTE} $(just_git_branch)'
-alias got='git '
-alias get='git '
+alias wip='git add . && git commit -m WIP && git push ${DEFAULT_GIT_REMOTE} $(git branch --show-current)'
 alias dotfilepush="cd ~/.dotfiles && git add home/ && git commit -m \"sync dotfiles\" && git push origin master && cd -"

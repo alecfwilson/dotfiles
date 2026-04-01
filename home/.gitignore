@@ -5,10 +5,11 @@ build/
 .ipynb_checkpoints/
 *.npy
 *.npz
-*.caffemodel
-*.prototxt
 # Compiled Python files
 *.pyc
+__pycache__/
+.pytest_cache/
+.mypy_cache/
 
 # Folder view configuration files
 .DS_Store
