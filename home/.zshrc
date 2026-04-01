@@ -173,8 +173,13 @@ eval "$(pyenv init -)"
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc'; fi
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
+# Lazy-load rbenv: shims work immediately, full init deferred until rbenv is called directly
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+_rbenv_load() {
+  unset -f rbenv
+  eval "$(rbenv init - --no-rehash)"
+}
+rbenv() { _rbenv_load && rbenv "$@" }
 # Lazy-load nvm: defer the ~500ms source until first use
 export NVM_DIR="$HOME/.nvm"
 _nvm_load() {

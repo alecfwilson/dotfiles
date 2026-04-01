@@ -21,7 +21,11 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-# Symlink dotfiles into home directory using stow
+# Remove any default files that would block stow, then symlink dotfiles
+for file in home/.*; do
+  target="$HOME/$(basename $file)"
+  [[ -f "$target" && ! -L "$target" ]] && rm "$target"
+done
 cd "$HOME/.dotfiles"
 stow home
 
