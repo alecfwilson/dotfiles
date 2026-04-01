@@ -88,6 +88,8 @@ echo "gem cleanup" && gem cleanup
 echo "flush" && flush
 echo "cleanup" && (cd ~ && cleanup)
 echo "lscleanup" && lscleanup
+echo "mackup backup" && mackup backup
+echo "brew bundle dump" && brew bundle dump --force --file="$HOME/.dotfiles/Brewfile"
 echo "emptytrash" && emptytrash
 )'
 

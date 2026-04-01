@@ -1,8 +1,6 @@
 [user]
 	name = Alec Wilson
 	email = alec.f.wilson@gmail.com
-[include]
-        path = ~/.gitconfig.dotfiles_profile
 [merge]
         log = true
 	tool = opendiff
@@ -46,8 +44,12 @@
 	br = branch
 	type = cat-file -t
 	dump = cat-file -p
+[pull]
+        rebase = false
+[init]
+        defaultBranch = main
 [help]
-        autocorrect = 20
+        autocorrect = 0
 [credential]
 	helper = manager
 [credential "https://dev.azure.com"]

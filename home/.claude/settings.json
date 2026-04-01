@@ -1,0 +1,80 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch",
+      "WebFetch",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(ls*)",
+      "Bash(cd*)",
+      "Bash(find*)",
+      "Bash(test*)",
+      "Bash(which*)",
+      "Bash(command -v*)",
+      "Bash(hostname*)",
+      "Bash(readlink*)",
+      "Bash(file*)",
+      "Bash(wc*)",
+      "Bash(head*)",
+      "Bash(tail*)",
+      "Bash(defaults read*)",
+      "Bash(head:*)",
+      "Bash(git:*)",
+      "Bash(~/.dotfiles/themes/powerlevel10k/gitstatus/install:*)",
+      "Bash(test:*)",
+      "Bash(ls:*)",
+      "Bash(command:*)",
+      "Bash(ruby:*)",
+      "Bash(tail:*)",
+      "Bash(rbenv version:*)",
+      "Bash(grep:*)",
+      "Bash(brew list:*)",
+      "Bash(brew install:*)",
+      "Bash(brew bundle:*)",
+      "Bash(brew uninstall:*)",
+      "Bash(mas list:*)",
+      "Bash(defaults read:*)",
+      "Bash(trash:*)",
+      "Bash(xargs:*)",
+      "Bash(cp:*)",
+      "Bash(rm:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/alecfwilson/.claude/hooks/validate-shell-config.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/alecfwilson/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "episodic-memory@superpowers-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
+  },
+  "autoMemoryEnabled": true
+}

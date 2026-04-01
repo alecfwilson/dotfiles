@@ -5,115 +5,31 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Path to your dotfiles.
 export DOTFILES=$HOME/.dotfiles
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-HIST_STAMPS="yyyy-mm-dd"
-
-# Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+export UPDATE_ZSH_DAYS=7
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"  # uncomment for faster git status in large repos
+
 plugins=(
 	git
-	# autojump
-	# autopep8
 	brew
 	common-aliases
-	# compleat
-	# django
-	# docker
-	# gitfast
-	# git-extras
-	# git-flow 
-	# history
 	history-substring-search
-	# jsontools
 	last-working-dir
-	# node
-	# npm
 	macos
-	# perl 
-	# pep8
 	pip
-	# pyenv
-	# pylint
 	python
 	sublime
-	# sudo
-	# systemd
 	tmux
-	# tmuxinator
-	# urltools
 	vi-mode
-	# virtualenvwrapper
 	vscode
-	# web-search
 	zoxide
 	zsh-autosuggestions
 	zsh-syntax-highlighting
@@ -130,56 +46,33 @@ function just_git_branch {
     echo "${ref#refs/heads/}"
 }
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 export EDITOR='vim'
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
+# Google Cloud SDK
 if [ -f '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc'; fi
 
+# pyenv — shims added first, then pushed back by Homebrew below
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alecfwilson/google-cloud-sdk/completion.zsh.inc'; fi
-# Lazy-load rbenv: shims work immediately, full init deferred until rbenv is called directly
+# Homebrew takes priority over pyenv so that python3 resolves to Homebrew's python
+export PATH=/opt/homebrew/bin:$PATH
+
+# Lazy-load rbenv: shims go in front of Homebrew so ruby/gem/bundle use rbenv
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 _rbenv_load() {
   unset -f rbenv
   eval "$(rbenv init - --no-rehash)"
 }
 rbenv() { _rbenv_load && rbenv "$@" }
+
 # Lazy-load nvm: defer the ~500ms source until first use
 export NVM_DIR="$HOME/.nvm"
 _nvm_load() {
@@ -192,7 +85,6 @@ node() { _nvm_load && node "$@" }
 npm()  { _nvm_load && npm  "$@" }
 npx()  { _nvm_load && npx  "$@" }
 
-export PATH=/opt/homebrew/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(direnv hook zsh)"

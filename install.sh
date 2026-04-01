@@ -27,7 +27,7 @@ for file in home/.*; do
   [[ -f "$target" && ! -L "$target" ]] && rm "$target"
 done
 cd "$HOME/.dotfiles"
-stow home
+stow --no-folding home
 
 # Set default shell to zsh if not already
 if [[ "$SHELL" != "$(which zsh)" ]]; then
