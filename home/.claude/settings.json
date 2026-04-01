@@ -54,7 +54,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/alecfwilson/.claude/hooks/validate-shell-config.sh"
+            "command": "$HOME/.claude/hooks/validate-shell-config.sh"
           }
         ]
       }
@@ -62,7 +62,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/Users/alecfwilson/.claude/statusline-command.sh"
+    "command": "$HOME/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
