@@ -85,6 +85,8 @@ eval "$(direnv hook zsh)"
 # vi-mode: reduce Esc delay from 400ms to ~10ms
 KEYTIMEOUT=1
 
-# history-substring-search keybindings (up/down arrows)
+# history-substring-search keybindings (up/down arrows, both insert and normal mode)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd '^[[A' history-substring-search-up
+bindkey -M vicmd '^[[B' history-substring-search-down

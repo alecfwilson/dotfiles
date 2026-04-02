@@ -1,5 +1,12 @@
 #!/bin/zsh
 
+# Guard: must be run from inside the cloned dotfiles repo
+if [[ ! -d "$HOME/.dotfiles" ]]; then
+  echo "Error: ~/.dotfiles not found. Clone the repo first:"
+  echo "  git clone https://github.com/alecfwilson/dotfiles ~/.dotfiles"
+  exit 1
+fi
+
 echo "Setting up your Mac..."
 
 # Install Homebrew if missing
@@ -45,6 +52,17 @@ export NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"
 nvm install --lts
 nvm alias default lts/*
+
+# Create .dropboxignore if Dropbox is present
+DROPBOX="$HOME/Library/CloudStorage/Dropbox"
+if [[ -d "$DROPBOX" ]] && [[ ! -f "$DROPBOX/.dropboxignore" ]]; then
+  cat > "$DROPBOX/.dropboxignore" <<'EOF'
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+EOF
+fi
 
 # Set default shell to zsh if not already
 if [[ "$SHELL" != "$(which zsh)" ]]; then
