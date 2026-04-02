@@ -18,11 +18,9 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
 	git
-	brew
 	history-substring-search
 	last-working-dir
 	macos
-	pip
 	python
 	sublime
 	tmux

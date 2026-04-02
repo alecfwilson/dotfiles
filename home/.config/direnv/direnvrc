@@ -1,0 +1,13 @@
+# layout uv: creates/activates a uv-managed venv in .venv
+# Usage in .envrc: layout uv
+layout_uv() {
+  if [[ -d .venv ]]; then
+    VIRTUAL_ENV="$(pwd)/.venv"
+  else
+    uv venv --quiet
+    VIRTUAL_ENV="$(pwd)/.venv"
+  fi
+  export VIRTUAL_ENV
+  PATH_add "$VIRTUAL_ENV/bin"
+  export UV_ACTIVE=1
+}

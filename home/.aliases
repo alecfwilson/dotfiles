@@ -76,13 +76,12 @@ echo "brew update" && brew update
 echo "brew upgrade" && brew upgrade
 echo "brew update" && brew update
 omz_out=$(omz update 2>&1); echo "$omz_out" | grep -q "already at the latest" && echo "omz: already up to date" || echo "$omz_out"
-git -C $DOTFILES/plugins/zsh-autosuggestions pull --quiet && git -C $DOTFILES/plugins/zsh-syntax-highlighting pull --quiet && echo "zsh plugins up to date"
+git -C $DOTFILES/plugins/zsh-autosuggestions pull --quiet && git -C $DOTFILES/plugins/zsh-syntax-highlighting pull --quiet && git -C $DOTFILES/themes/powerlevel10k pull --quiet && echo "zsh plugins up to date"
 echo "mas upgrade" && mas upgrade
 echo "brew tap --repair -v" && brew tap --repair -v
 echo "brew cleanup -v" && brew cleanup -v
-echo "pip3 cache purge" && pip3 cache purge
+echo "uv cache clean" && uv cache clean
 echo "yarn cache clean" && yarn cache clean
-echo "poetry cache clear --all pypi" && poetry cache clear --all pypi
 echo "xcrun simctl delete unavailable" && xcrun simctl delete unavailable
 echo "gem cleanup" && gem cleanup && rbenv rehash
 echo "flush" && flush

@@ -46,23 +46,24 @@ rbenv global "$(cat "$HOME/.ruby-version")"
 # Install Node LTS via nvm
 if [[ ! -s "$HOME/.nvm/nvm.sh" ]]; then
   # nvm not found — install via official script (check https://github.com/nvm-sh/nvm for latest version)
-  PROFILE=/dev/null curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  PROFILE=/dev/null curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 fi
 export NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"
 nvm install --lts
 nvm alias default lts/*
 
-# Create .dropboxignore if Dropbox is present
-DROPBOX="$HOME/Library/CloudStorage/Dropbox"
-if [[ -d "$DROPBOX" ]] && [[ ! -f "$DROPBOX/.dropboxignore" ]]; then
-  cat > "$DROPBOX/.dropboxignore" <<'EOF'
+# Create .dropboxignore in all Dropbox locations if present
+for DROPBOX in "$HOME/Dropbox" "$HOME/Library/CloudStorage/Dropbox"; do
+  if [[ -d "$DROPBOX" ]] && [[ ! -f "$DROPBOX/.dropboxignore" ]]; then
+    cat > "$DROPBOX/.dropboxignore" <<'EOF'
 .DS_Store
 ._*
 Thumbs.db
 Desktop.ini
 EOF
-fi
+  fi
+done
 
 # Set default shell to zsh if not already
 if [[ "$SHELL" != "$(which zsh)" ]]; then
@@ -73,3 +74,4 @@ echo ""
 echo "Done. Next steps:"
 echo "  1. source ~/.zshrc (or open a new terminal)"
 echo "  2. mackup restore  (after confirming Dropbox is synced)"
+echo "  3. For Python projects: add 'layout uv' to .envrc in project dirs"
