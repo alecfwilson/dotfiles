@@ -12,7 +12,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_CUSTOM=$DOTFILES
 
 export UPDATE_ZSH_DAYS=7
-ENABLE_CORRECTION="true"
 HIST_STAMPS="yyyy-mm-dd"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"  # uncomment for faster git status in large repos
 

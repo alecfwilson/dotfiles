@@ -65,6 +65,54 @@ EOF
   fi
 done
 
+# Configure Rectangle with Spectacle-compatible shortcuts
+if [[ -d /Applications/Rectangle.app ]]; then
+  python3 << 'PYEOF'
+import subprocess
+
+CMD, OPT, CTRL, SHIFT = 1048576, 524288, 262144, 131072
+LEFT, RIGHT, DOWN, UP = 123, 124, 125, 126
+F_KEY, C_KEY, Z_KEY, D_KEY, G_KEY, E_KEY, T_KEY, RETURN_KEY = 3, 8, 6, 2, 5, 14, 17, 36
+
+shortcuts = {
+    # Spectacle shortcuts
+    'leftHalf':        (LEFT,       OPT|CMD),
+    'rightHalf':       (RIGHT,      OPT|CMD),
+    'topHalf':         (UP,         OPT|CMD),
+    'bottomHalf':      (DOWN,       OPT|CMD),
+    'center':          (C_KEY,      OPT|CMD),
+    'maximize':        (F_KEY,      CTRL|OPT|CMD),
+    'topLeft':         (LEFT,       CTRL|CMD),
+    'topRight':        (RIGHT,      CTRL|CMD),
+    'bottomLeft':      (LEFT,       CTRL|SHIFT|CMD),
+    'bottomRight':     (RIGHT,      CTRL|SHIFT|CMD),
+    'nextDisplay':     (RIGHT,      CTRL|OPT|CMD),
+    'previousDisplay': (LEFT,       CTRL|OPT|CMD),
+    'larger':          (RIGHT,      CTRL|OPT|SHIFT),
+    'smaller':         (LEFT,       CTRL|OPT|SHIFT),
+    'nextThird':       (RIGHT,      CTRL|OPT),
+    'previousThird':   (LEFT,       CTRL|OPT),
+    'undo':            (Z_KEY,      OPT|CMD),
+    'redo':            (Z_KEY,      OPT|SHIFT|CMD),
+    # Rectangle defaults for actions not in Spectacle
+    'almostMaximize':  (RETURN_KEY, CTRL|OPT|SHIFT),
+    'maximizeHeight':  (UP,         CTRL|OPT|SHIFT),
+    'firstThird':      (D_KEY,      CTRL|OPT),
+    'centerThird':     (F_KEY,      CTRL|OPT),
+    'lastThird':       (G_KEY,      CTRL|OPT),
+    'firstTwoThirds':  (E_KEY,      CTRL|OPT),
+    'lastTwoThirds':   (T_KEY,      CTRL|OPT),
+}
+
+for action, (keycode, modifiers) in shortcuts.items():
+    subprocess.run([
+        'defaults', 'write', 'com.knollsoft.Rectangle', action,
+        '-dict', 'keyCode', '-int', str(keycode), 'modifierFlags', '-int', str(modifiers)
+    ], capture_output=True)
+print("Rectangle shortcuts configured.")
+PYEOF
+fi
+
 # Set default shell to zsh if not already
 if [[ "$SHELL" != "$(which zsh)" ]]; then
   chsh -s "$(which zsh)"
