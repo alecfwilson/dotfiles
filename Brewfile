@@ -167,7 +167,6 @@ cask "db-browser-for-sqlite"
 cask "docker-desktop"
 cask "gcloud-cli"
 cask "gimp"
-cask "gpg-suite", args: { appdir: "/Applications" }
 cask "imageoptim"
 cask "insomnia"
 cask "notion"
