@@ -47,6 +47,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus",
   "hooks": {
     "PostToolUse": [
       {
@@ -76,5 +77,6 @@
       }
     }
   },
-  "autoMemoryEnabled": true
+  "autoMemoryEnabled": true,
+  "effortLevel": "high"
 }
