@@ -72,28 +72,28 @@ alias cleanup="find . -type f -name '*.DS_Store' ! -path './.DS_Store' ! -path '
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
 
 alias update_all='(
-echo "brew update" && brew update
-echo "brew upgrade" && brew upgrade
-echo "brew update" && brew update
-echo "brew upgrade" && brew upgrade
-git -C $DOTFILES/plugins/zsh-autosuggestions pull --quiet && git -C $DOTFILES/plugins/zsh-syntax-highlighting pull --quiet && git -C $DOTFILES/themes/powerlevel10k pull --quiet && echo "zsh plugins up to date"
-echo "mas upgrade" && mas upgrade
-echo "brew tap --repair -v" && brew tap --repair -v
-echo "brew cleanup -v" && brew cleanup -v
-echo "uv tool upgrade --all" && uv tool upgrade --all
-echo "uv cache clean" && uv cache clean
-echo "pyenv cache clean" && rm -rf ~/.pyenv/cache/*
-echo "yarn cache clean" && yarn cache clean
-echo "xcrun simctl delete unavailable" && xcrun simctl delete unavailable
-echo "gem cleanup" && gem cleanup && rbenv rehash
-echo "flush" && flush
-echo "cleanup" && (cd ~ && cleanup)
-echo "lscleanup" && lscleanup
-echo "brew bundle dump" && brew bundle dump --force --file="$HOME/.dotfiles/Brewfile"
-echo "mackup backup" && mackup backup --force 2>/dev/null | grep -c "Backing up" | xargs -I{} echo "  {} files backed up"
-echo "emptytrash" && emptytrash
+echo "> brew update" && brew update
+echo "> brew upgrade" && brew upgrade
+echo "> brew update" && brew update
+echo "> brew upgrade" && brew upgrade
+echo "> zsh plugin updates" && git -C $DOTFILES/plugins/zsh-autosuggestions pull --quiet && git -C $DOTFILES/plugins/zsh-syntax-highlighting pull --quiet && git -C $DOTFILES/themes/powerlevel10k pull --quiet && echo "zsh plugins up to date"
+echo "> mas upgrade" && mas upgrade
+echo "> brew tap --repair -v" && brew tap --repair -v
+echo "> brew cleanup -v" && brew cleanup -v
+echo "> uv tool upgrade --all" && uv tool upgrade --all
+echo "> uv cache clean" && uv cache clean
+echo "> pyenv cache clean" && rm -rf ~/.pyenv/cache/*
+echo "> yarn cache clean" && yarn cache clean
+echo "> xcrun simctl delete unavailable" && xcrun simctl delete unavailable
+echo "> gem cleanup" && gem cleanup && rbenv rehash
+echo "> flush" && flush
+echo "> cleanup" && (cd ~ && cleanup)
+echo "> lscleanup" && lscleanup
+echo "> brew bundle dump" && brew bundle dump --force --file="$HOME/.dotfiles/Brewfile"
+echo "> mackup backup" && mackup backup --force 2>/dev/null | grep -c "Backing up" | xargs -I{} echo "  {} files backed up"
+echo "> emptytrash" && emptytrash
 )
-omz_out=$(omz update 2>&1); echo "$omz_out" | grep -q "already at the latest" && echo "omz: already up to date" || echo "$omz_out"'
+echo "> omz update" && omz_out=$(omz update 2>&1); echo "$omz_out" | grep -q "already at the latest" && echo "omz: already up to date" || echo "$omz_out"'
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
