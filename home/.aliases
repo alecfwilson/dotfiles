@@ -84,7 +84,6 @@ echo "> uv tool upgrade --all" && uv tool upgrade --all
 echo "> uv cache clean" && uv cache clean
 echo "> pyenv cache clean" && rm -rf ~/.pyenv/cache/*
 echo "> yarn cache clean" && yarn cache clean
-echo "> xcrun simctl delete unavailable" && xcrun simctl delete unavailable
 echo "> gem cleanup" && gem cleanup && rbenv rehash
 echo "> flush" && flush
 echo "> cleanup" && (cd ~ && cleanup)
